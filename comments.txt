@@ -1,5 +1,0 @@
-page 2
-footnote for the table
-things are too close
-
-page 3 footnote for the page footnote is too close to the text

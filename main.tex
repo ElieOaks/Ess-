@@ -1,224 +1,95 @@
-\documentclass{ledger}
+\documentclass[11pt,a4paper]{article}
 
-%AUTHOR: the preferred method to generate PDF output is to use 'pdflatex'
-%To clean up after a successful build, try: 'latexmk -c main.tex'
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {files/}}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{url}
 
-
-%EDITOR: replace X's to set the data for the header and footer
-\newcommand{\thefirstpagenum}[0]{1}
-\newcommand{\thelastpagenum}[0]{5}
-\newcommand{\theyear}[0]{201X}
-\newcommand{\thevol}[0]{X}
-\newcommand{\thedoi}[0]{DOI 10.5195/LEDGER.\theyear.X}
-\newcommand{\ledgerpages}[0]{\thefirstpagenum-\thelastpagenum}
-
-
-%AUTHOR: please set these to generate correct PDF metadata
-\hypersetup{pdfauthor={First Last}, pdftitle={This is a Title}}
-
-
-%EDITOR: set the correct pageination during layout
-\setcounter{page}{\thefirstpagenum}
-
-
-%AUTHOR: this can be used to highlight changed text, surround with \edit{} and
-%uncomment either to determine color
-%\newcommand{\edit}[1]{{\color{red} #1}}
-\newcommand{\edit}[1]{#1}
-
-\overfullrule=10pt
-
-\title{Descriptive Title Written in Twenty-four Point Times New Roman}
-\author{First A.~Author\thanks{F.~A.~Author (first@stanford.edu) is Professor of Computer Science at Stanford University, USA}\thanks{1MyBitcoinAddress38f3tu8w}\and Second B.~Author\thanks{S.~B.~Author\textellipsis author affiliations should be written in 8 pt.~Times New Roman font and 9pt.~line spacing}\and 13 pt.~Times New Roman\thanks{The asterisk [ $\ast$ ] should be used for the Corresponding Author, and the dagger [ $\dagger$ ], double dagger [ $\ddagger$ ], section mark [ $\S$ ] and pilcrow [ $\P$ ] for the authors’ affiliations. If more footnotes are required, use the pattern: [ $\ast$ ], [ $\dagger$, $\ddagger$, $\S$, $\P$, $\dagger\dagger$, $\ddagger\ddagger$, $\S\S$, $\P\P$, $\dagger\dagger\dagger$ $\dots$ ].}}
-
-\pagestyle{pagemain}
-
-
-%The Author should select the appropriate pretitle below:
-\pretitle{
-  \centering \selectfont LEDGER \LaTeX \ TEMPLATE \par
-  %\centering \selectfont REVIEW ARTICLE \par
-  %\centering \selectfont RESEARCH ARTICLE \par 
-  \fontsize{24pt}{28pt}\selectfont} % Title is centered and at 24pt
+\title{Separation of Concerns: 
+You need it! Here is why.}
+\author{Joy van den Eijkhof}
+\date{04/11/2017}
 
 
 \begin{document}
-
 \maketitle
-
-\thispagestyle{pagefirst}
-
+\noindent
 \begin{abstract}
-The abstract should be written in 10 pt.~ Times New Roman font, 13 pt.~line spacing, and 1.2 cm indenting on either side.  Give a concise summary of the paper in a single paragraph of approximately 150 words (200 words max).  The abstract should communicate both what the paper is about and the important results obtained.  The abstract should contain neither references nor non-plain text elements such as equations or compute code.
-
-%AUTHOR: keywords are OK to show for Review article, will be hidden for publication
-\begin{keywords}
-\item First key word.
-\item Second key word.
-\item Same style as abstract.
-\item Not more than two lines of keywords.
-\end{keywords}
+One of the most fundamental design principles in Computer Science and programing is Separation of Concerns (SoC). It is the means to keep order and structure, as well as flexibility within code. It is important, yet not always easy to grasp for the inexperienced programmer. Therefore, this essay is for the beginner, by a beginner, to discuss the purpose, the importance as well as the benefits of applying SoC to programming.\linebreak  \linebreak \linebreak
 \end{abstract}
 
-\section{Introduction (13 pt.\ Times New Roman Bold)}
+\begin{center}
+ This essay is an attempt to reach IOOPM goals K32 and X59
+\end{center}
 
-Body text should be written in 11.5 pt.\ Times New Roman font with 13pt.\ line spacing.  The first paragraph and the headings and sub-headings should not be indented, but subsequent paragraphs should be indented 0.6cm.
+\pagebreak
+\maketitle
+\begin{flushleft}
+\section{Introduction}
+How can one eat an elephant? One bite at a time. How does one tackle a big problem? One small problem at a time. The principle of Separation of Concerns (SoC) deals with the dividing of a problem, in this case the elephant, into manageable pieces. More formally, SoC states that each element of a larger complex should have one coherent purpose, and have as little overlapping as possible with the other elements.\footnote{Makabee, Hayim. “Separation of Concerns.” \textit{Effective Software Design}, 5 Feb. 2012, effectivesoftwaredesign.com/2012/02/05/separation-of-concerns/.} In programming, high SoC can be achieved through modularity and encapsulating concerns. In contrast very low SoC could be having all code regarding one program in one main function. At first it might seem attractive to have all code in one place, but for it to be easier to write, develop and maintain, SoC is an invaluable principle to follow.
 
-The first body section must be labeled ``Introduction''  Using plain language, explain why your work is important, describe how it fits within the existing body of cryptocurrency knowledge, and then state in what way your work represents a new contribution.  If your paper does not follow a conventional structure (see below), then the Introduction should end by describing what the following sections of the paper are about.  The Introduction should contain approximately 500 to 750 words (1000 words max) and should not use sub headings.
+\section{The Purpose}
 
-\section{Body Section Headings are 13pt.\ Times New Roman Bold}
+The purpose of SoC is to create order from the complex. This order, in turn, makes programming more manageable and feasible. In the programming language C this can be achieved by writing code in separate coherent modules with low coupling; by for example, separating one module that handles the logic behind linked lists from the logic of binary trees. It is important to note that low coupling should not be sacrificed for high coherency, or in other words, each function should not be its own module. This would defeat the purpose of order. It is the order that is the reason SoC is so effective, for it enables a more programmer friendly code-environment.
+\section{The Importance}
+SoC is worth it. Its benefits are both in time, head space and in some instances even financial. The main benefits can be boiled down to this: Code is easier to handle when one only needs to deal with one piece of it at a time, and one can do that. To the developer SoC allows for the solving of one problem at a time in an orderly manner that helps create head space to solve the issue at hand, rather than being overwhelmed by the problem as a whole. It also makes it easier to reuse code, when it is encapsulated and has a singular purpose. To the one who needs to maintain the code, a change in one module las a low risk of breaking the rest of the program, when that module has low coupling with other modules, for example. Overall there are many benefits to SoC and it is worth the time and energy it takes to apply it to the program, or problem at hand.
 
-Any number of body sections may follow the Introduction.  For hypothesis-driven research, we suggest the conventional structure of Methods, Results, Discussion.  For technology-advancement papers, provide concise descriptive titles for each body section.  The body sections should logically flow together such that the paper tells a cohesive and compelling story of the research that was undertaken and the results that were obtained.
+\section{Implementing SoC}
 
-\subsection{Subheadings are inline and written in italic and followed by an em dash}
+Not applying SoC from the beginning can have a heavy cost. It goes without question that it is easier to structure a program and code from the beginning, rather than than try to untangle concerns after the fact. Consider for example the following piece of Java code: 
 
-Sub headings should be used sparingly but are appropriate where a sequence of more or less unrelated material (particularly in a long Methods section) may flow better.
-
-\subsection{Page margins}
-
-\emph{Ledger} uses right and left page margins of 3.1 cm, and top and bottom margins of 2.4 cm and 1.0 cm, respectively.  Headers and footers are, respectively, 1.5 cm and 1.0 cm from the edge.  The bottom footer overlaps with the bottom page margin, and has the effect of pushing the effective bottom margin up on each page after the first, thereby placing the author affiliations in a more appropriate location closer to the bottom of the first page.
-
-\subsection{Tables}
-
-\cref{tbl:1} is an example of a properly formatted table.  It also describes the styles used in this document.
-
-\begin{table}[ht]
-\caption{Fonts and Paragraph Styles.}\label{tbl:1}
-\begin{tabularx}{\textwidth}{ l  c  c  C  C  C  c  c  c  c }
-\hline
-\tableheading{Style name} & \tableheading{Font} & \tableheading{Size \\ \centering (pt.)} & \multicolumn{3}{c}{\tableheading{Paragraph spacing \\ \centering (pt.)}} & \tableheading{Bold} & \tableheading{Italic} & \tableheading{All \\ \centering caps} & \tableheading{Center- \\ \centering ed} \\ \cline{4-6}
- & & & \fontsize{8pt}{8pt}\selectfont Line & \fontsize{8pt}{8pt}\selectfont Above & \fontsize{8pt}{8pt}\selectfont Below & & & & \\\hline
-Article title & Times & 24 & 28 & 0 & 0 & $\square$ & $\square$ & $\square$ & $\blacksquare$ \\
-Authors names & Times & 13 & 13 & 14 & 20 & $\square$ & $\square$ & $\square$ & $\blacksquare$ \\
-Author affiliations & Times & 8 & 9 & 0 & 1 & $\square$ & $\square$ & $\square$ & $\blacksquare$ \\
-Abstract\footnote{The Abstract section begins with the word ``Abstract'' in bold face and followed by a period.  The abstract text immediately follows (no line break) and has regular font weight.} & Times & 10 & 13 & 0 & 0 & $\square$ & $\square$ & $\square$ & $\square$ \\
-\pbox[c][.8cm]{\textwidth}{Article type / ``Key \\ words'' heading} & Times & 10 & 13 & 9 & 6 & $\square$ & $\square$ & $\blacksquare$ & $\blacksquare$ \\
-Section headings & Times & 13 & 15 & 15 & 7 & $\blacksquare$ & $\square$ & $\square$ & $\square$ \\
-Sub headings\footnote{Subsections are allowed and can be numbered or unnumbered.  In either case, the heading is written in-line with the body text and in italic followed by an em dash.} & Times & 11.5 & 13.5 & 0 & 0 & $\square$ & $\blacksquare$ & $\square$ & $\square$ \\
-Body text & Times & 11.5 & 13.5 & 0 & 0 & $\square$ & $\square$ & $\square$ & $\square$ \\
-Figure captions & Times & 10 & 13 & --- & 20 & $\square$ & $\square$ & $\square$ & $\square$\footnote{Figure captions less than one line in length should be centered while multi-line captions should be justified.} \\
-Table captions & Times & 10 & 13 & 15 & 6 & $\square$ & $\square$ & $\square$ & $\blacksquare$ \\
-Text in tables & Times & 10 & 11.5 & 1 & 1 & $\square$ & $\square$ & $\square$ & --- \\
-Table headings & Times & 10 & 13 & 4 & 4 & $\square$ & $\square$ & $\square$ & $\blacksquare$ \\
-Text in figures & Arial & 8 & --- & --- & --- & $\square$ & $\square$ & $\square$ & --- \\
-References & Times & 10 & 12 & 0 & 6 & $\square$ & $\square$ & $\square$ & $\square$  \\
-Footnotes in tables & Times & 8 & 11 & 0 & 3 & $\square$ & $\square$ & $\square$ & $\square$ \\
-Code & Courier New & 10 & 11 & 0 & 0 & $\square$ & $\square$ & $\square$ & $\square$ \\
-Display equations & \makebox[0pt]{\pbox[c][.8cm]{\textwidth}{Times or \\ \centering Cambria Math}} & 11.5 & --- & 9 & 7 & $\square$ & $\square$ & $\square$ & $\blacksquare$ \\ \hline
-\end{tabularx}
-\end{table}
-
-\subsection{Numbered and bulleted lists}
-
-Authors are encouraged to use lists to improve the readability of information best presented in point form.  The requirements are as follows.
-\begin{enumerate}
-\item The line marker is indented 0.6 cm.
-\item The list item is further indented 0.6 cm (1.2 cm) in total.
-\item If the item is longer than a single line, the text on wrapping lines must begin at an indentation of 1.2 cm, and the line spacing must be consistent with the body of the text.
-\item If the list is ordinal, the numbers (or letters) must be surrounded by round brackets.
-\item For non-ordinal lists, use small round dots as markers.
-\end{enumerate}
-Nested lists are permissible but should be used sparingly.
-
-\subsection{Figures}
-
-\cref{fig:1} is an example of a figure.  Figures should be of sufficient resolution (300 DPI for photographs and 600 DPI for line art).
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=5in]{graph}
-\caption{This is an example of an acceptable plot.  The axes are clearly labeled, 8 pt.\ Arial font is used, gridlines are faint ($1/4$ pt.), the plot frame is slightly thicker ($1/2$ pt.\ black) and the plotted data heavier still ($1$ pt.).  In this example, gray scaling is used to differentiate between the two time series.}
-\label{fig:1}
+\begin{figure}[h!]
+  \includegraphics[width=15cm,height=6cm,keepaspectratio,]{Images/simulation}
+  \caption{Simulation class}
+  \label{Figure 1.1}
 \end{figure}
 
-\subsection{Mathematical equations}
+In Figure 1 avergaQueLength and customersServed were attributes of the class Simulation. These existed for the purpose of being displayed as the statistics of the Simulation while it was running. At the time this code was first written, it seemed like enough. Soon however, there were more statistical information that needed to be displayed.  The choice was to either create a subclass called statistics, or add more attributes to the simulation class. Regardless, this change would affect other programs that relied on this class, this is therefore a concern, that could have benefitted from being its own class or subclass, from the beginning. In the example above, by trying to solve too many problems within one class, it created extra challenges later for the program developer who had to go back and change it. On a larger scale, in the business world, such a flaw could translate into financial cost. It pays of to do the work now by applying SoC early on, rather than paying a potential heavy price later on.
 
-Equations should appear inline whenever possible however, equations that are important, referenced in another place in the text, or complex should be centered and displayed separated from teh surrounding text by 9 pts.\ of white space above and 7 pts.\ of white space below:
-\begin{equation}
-P_{\text{doublespend}}=1-\sum _{k=0}^za\frac{\lambda ^ke^{-\lambda}}{k!}\left[ 1-(q/p)^{z-k}\right] .
-\end{equation}
-Authors submitting in Microsoft Word must use the built-in equation editor of the MathType plug-in.
+\section{The benefits}
+Code that has been written according to the principles of SoC are ideally flexible and easily changed. In its very nature, such code should have few repetitions, modules and classes should have high coherency and low coupling. This in turn means that it should be easier to change underlying logic of a function, or add new aspects to a class without breaking the parts of the program that rely on these lines of code. Consider the following class in Java:     \linebreak
 
-\subsection{Code}
+\begin{figure}[h!]
+  \includegraphics[width=18cm,height=6cm,keepaspectratio,]{Images/FulSenior.png}
+  \caption{Customer class}
+  \label{Figure 1.2}
+\end{figure}
 
-Code segments can be displayed inline using 10 pt.~Courier New (e.g., \lstinline|#define largerlimit 8000000|), or on display in the same font:
-\begin{lstlisting}
-if(blocknumber > 115000)
-maxblocksize = largerlimit
-\end{lstlisting}
+In Figure 2\footnote{van den Eijkhof, Joy E, and Ulf Sigvardsson. 2 Nov. 2017. Came up with the logic behind Serve().} the class Customer has the boolean attribute isASenior, and the method serve() acts differently depending upon weather isASenior is true or not. In short there are multiple things being handled within one class, and within one method. Consider if a third attribute was to be included, such as isAFamily, and serve() handled those with that attribute as true, differently from isASenior. There are suddenly multiple pieces of code that needs to be edited, and depending upon where else this class is used, that code needs editing too. Alternatively we can apply SoC to this problem:\linebreak \linebreak \linebreak \linebreak \linebreak \linebreak \linebreak \linebreak \linebreak \linebreak \linebreak \linebreak 
 
-\noindent This is an example of a Decription List:
-\begin{description}
-\item[First] For displayed code, the first line should be indented by 1.2cm
-  (twice the standard indent) with additional tabs at multiples of 0.6 cm.
-\end{description} 
-  
+\begin{figure}[h!]
+  \includegraphics[width=15cm,height=6cm,keepaspectratio,]{Images/Senior}
+  \caption{Senior class}
+  \label{Figure 1.3}
+\end{figure}
 
-\subsection{Endnotes}
 
-Endnotes are denoted with a superscript Arabic numeral and ordered sequentially.  The final section of the manuscript lists the notes and references (i.e., the endnotes) denoted throughout the paper.  Notes provide proof of facts stated in the article, or additional clarifications on points made in the manuscript.  References list cited material; for example, this is a reference to a journal article,\endnote{Wilmer, C.~E., Rizum P.~R.  ``How to Write and Format an Article for \textit{Ledger}.''  \textit{Ledger} \textbf{1.1} 1--11 (2015) doi:10.1037/rmh0000008} this is a reference to a book,\endnote{Wilmer, C.~E. \textit{Ledger:  The Story of a Journal}.  Pittsburgh:  University of Pittsburgh Press 32--33 (2016).} this is a reference to a forum comment,\endnote{Wilmer, C.~E.~(/u/ThorwawayLedgerAcct).  Comment in ``On the Future of Bitcoin.''  \textit{Reddit} (accessed 11 January 2016) \url{https://www.reddit.com/r/bitcoin/comments/3iao3i/on\_ the\_ future\_ of\_ bitcoin/cupd80}} and this is a reference to the Bitcoin white paper.\endnote{Nakamoto, S.~``Bitcoin:  A Peer-to-Peer Electronic Cash System.''  No Publisher (2008) \url{https://bitcoin.org/bitcoin.pdf}}
+ In Figure 3\footnote{van den Eijkhof, Joy E, and Ulf Sigvardsson. 2 Nov. 2017. Came up with the logic behind Serve().} the subclass Senior has been created with its own added attribute and its own serve-method, overriding the Superclass’ Customers serve() method. By doing this, there are three points of SoC that can be pointed out from the above example:
+\begin{enumerate}
+\item The Senior Class can override all Customer Methods so that it suits the class, rather than editing in every Customer method, to take the isASenior attribute from Figure 1.2 into consideration. 
+\item The Senior class serve method still refers back to the Super class’s serve method, which means that if that method were to be changed, it would not have to be changed in two places, but only in one, which is the benefit of non-repetitiveness.  
+\item If a new type of Customer was to be introduced, then rather than introducing a new attribute such as isAFamily, one could instead add another subclass to Customers, which means the program is more developer friendly.
+\end{enumerate}
+
+
+\section{The impossible ideal}
+The scientist Edsger W.Dijkstra who coined the term “Seperation of Concerns” said that “...even if not perfectly possible, [Seperation of Concerns] is yet the only available technique for effective ordering of one's thoughts, that I know of” \footnote{Dijkstra, Edsger W. “On the Role of Scientific Thought.” 30 Aug. 1974, NUENEN, The Netherlands.}  Is SoC really achievable? It is, as above examples have illustrated, but as Edsger W.Dijkstra pointed out, it is not perfectly possible. By the very nature of a program, that functions call upon functions, and methods call upon methods, true separation can never truly be achieved. This challenge can be considered in cross cutting concerns, concerns that are applicable to a whole complex, and affects the whole complex, and therefore cannot be properly encapsulated. Aspect Oriented Programming (AOP) languages try to address this issue by introducing something called an Advice. An Advice is code that is executed when different types of joint-points, such as when a method calls or receives data , is happened upon. AOP is able encapsulate joint points and change the way the code is run.\footnote{Pollice, Gary. “Aspect-Oriented Programming: What Is It Good for?” IBM- United States, Developerworks, 15 Mar. 2006, www.ibm.com/developerworks/rational/library/mar06/pollice/index.html.}  However, AOP falls short of the ideal as well, as the isolation of concerns can still be broken. 
 
 \section{Conclusion}
+Separation of Concerns (SoC) means to write a program in such a way that all its pieces deal with one coherent problem at a time. It is a worthwhile design principle to uphold as it keeps order, and that order maintains coherency and easier maintainability of a program. Although the ideal SOC cannot be achieved, it is still a worthwhile pursuit. Apply SoC, for remember, the code of a program in use is never done, but always under construction. 
 
-For papers that do not follow a conventional structure, synthesize and summarize the main results of the paper.  This section is also an appropriate place to clarify the limitations of the work, as well as to describe new research questions that arose.  The conclusion section for papers that follow a conventional structure (i.e., Methods, Results, Discussion) may be very short because the synthesis of the results usually occurs in the Discussion section.  The Conclusion and the Introduction should be the two sections of your paper most accessible to an interdisciplinary readership.
+\section{Sources}
+\begin{enumerate}
+\item Makabee, Hayim. “Separation of Concerns.” \textit{Effective Software Design}, 5 Feb. 2012, effectivesoftwaredesign.com/2012/02/05/separation-of-concerns/.
+\item  Dijkstra, Edsger W. “On the Role of Scientific Thought.” 30 Aug. 1974, NUENEN, The Netherlands.
+\item Pollice, Gary. “Aspect-Oriented Programming: What Is It Good for?” IBM - United States, Developerworks, 15 Mar. 2006, www.ibm.com/developerworks/rational/library/mar06/pollice/index.html.
+\item van den Eijkhof, Joy E, and Ulf Sigvardsson. 2 Nov. 2017. Came up with the logic behind Serve().
+\end{enumerate}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%define the following sections to hide their Section Number (Notes Style)
-\ledgernotes
-
-\section{Acknowledgement}
-
-Acknowledge people who helped carry out the research or prepare the manuscript but whose contribution did not warrant authorship.  List funders and other sources of financial support at the end of this section.  
-
-\section{Author Contributions}
-
-State the contribution made by each author.  Refer to authors using their initials, for example, ``FAA developed the code to perform the simulation (65\%) and SBA analyzed the results (35\%).  They both contributed equally to manuscript preparation.''
-
-\section{Conflict of Interest}
-
-State any potential conflict of interest here, again referring to authors using their initials.  Although assessing whether a conflict of interest exists can be difficult, as a guideline consider whether it would be embarrassing should the potential conflict become publicly known.  This section may be omitted if no conflict of interest exists.
-
-
-%AUTHOR: comment out if using thebibliography
-\theendnotes
-
-
-%AUTHOR: comment out, this is used to make sure the Creative Commons License
-%image fits on page
-\newpage
-
-
-%define the following sections to have the Appendix Style
-\appendix
-
-
-\section{Calculations}
-
-Relegate to an appendix material that would distract from the flow of the article, but that is required to rigorously prove claims made or concepts introduced in the paper’s body.
-
-
-%AUTHOR: this is an alternative to using Endnotes
-%\bibliographystyle{nature}
-
-%\begin{thebibliography}{99}
-
-
-%\bibitem{itemName}
-%Last, F.
-%\newblock {``Title.''}
-%\newblock {\em Publication} (XX Month 201X)
-%  \url{http://}
-
-
-%\end{thebibliography}
-
-
-
-%add the Creative Commons license footer to the last page
-\thispagestyle{pagelast}
-
+\end{flushleft}
 \end{document}
 
 
